@@ -1,7 +1,8 @@
 package com.company.classes;
 
-import com.company.classes.animals.Animal;
+import com.company.classes.animaux.Animal;
 
+/**
 public class Enclos {
     private String name;
     private double superficie;
@@ -42,10 +43,9 @@ public class Enclos {
         if (Enclos.getPopulation == 0 || Enclos.Proprete)
         return Proprete.BON;
     }
-
     public void feedAnimals() {
        for(int val : listAnimals){
            listAnimals[val].eat;
        }
     }
-}
+}*/

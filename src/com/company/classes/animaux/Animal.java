@@ -1,4 +1,4 @@
-package com.company.classes.animals;
+package com.company.classes.animaux;
 
 public abstract class Animal {
 
@@ -11,13 +11,13 @@ public abstract class Animal {
     private boolean sommeil;
     private int vie;// Indicateur sur 100 point
 
-    public Animal(String speciesName, String sexe, int weight, int age) {
-        this.nomEspece = speciesName;
+    public Animal(String nomEspece, String sexe, int poid, int age) {
+        this.nomEspece = nomEspece;
         this.sexe = sexe;
-        this.poid = weight;
+        this.poid = poid;
         this.age = age;
         this.faim = 100;
-        this.sommeil = 100;
+        this.sommeil = false;
         this.vie = 100;
     }
 
@@ -74,14 +74,13 @@ public abstract class Animal {
         }
     }
 
-    public void roar(){
-        System.out.println("Roarr !");
-    }
-    public void heal(){
+    public abstract void rugir();
+
+    public void soigner(){
         System.out.println("Soigné");
     }
 
-    public void sleep(){
+    public void dormir(){
         if (!sommeil){
             System.out.println("S'endort");
             this.sommeil = true;
