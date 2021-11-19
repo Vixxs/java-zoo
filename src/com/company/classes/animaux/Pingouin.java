@@ -17,7 +17,7 @@ public class Pingouin extends Ovovivipare implements Volant, Vagabond, Marin {
     }
 
     @Override
-    public void rugir() {
+    public void crier() {
         System.out.println("Cui cui");
     }
 

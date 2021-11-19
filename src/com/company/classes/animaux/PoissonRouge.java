@@ -15,7 +15,7 @@ public class PoissonRouge extends Ovovivipare implements Marin {
     }
 
     @Override
-    public void rugir() {
+    public void crier() {
         System.out.println("Blblblbl");
     }
 

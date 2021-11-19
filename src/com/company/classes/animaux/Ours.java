@@ -15,7 +15,7 @@ public class Ours extends Mammifere implements Vagabond {
     }
 
     @Override
-    public void rugir() {
+    public void crier() {
         System.out.println("Grrrr !");
     }
 

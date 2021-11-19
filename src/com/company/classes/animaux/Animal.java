@@ -21,6 +21,14 @@ public abstract class Animal {
         this.vie = 100;
     }
 
+    public String toString() {
+        String newLine = System.getProperty("line.separator");
+        return "Nom espece : " + this.nomEspece + newLine +
+                "Sexe : " + this.sexe + newLine +
+                "Poid : " + this.poid + " Kg" + newLine +
+                "Age : " + this.age + " ans" + newLine   ;
+    }
+
     public String getNomEspece() {
         return nomEspece;
     }
@@ -65,7 +73,7 @@ public abstract class Animal {
         return vie;
     }
 
-    public void eat(){
+    public void manger(){
 
         if (!sommeil){
             System.out.println("Mange...");
@@ -74,7 +82,7 @@ public abstract class Animal {
         }
     }
 
-    public abstract void rugir();
+    public abstract void crier();
 
     public void soigner(){
         System.out.println("Soigné");

@@ -15,7 +15,7 @@ public class Requin extends Ovovivipare implements Marin {
     }
 
     @Override
-    public void rugir() {
+    public void crier() {
         System.out.println("Shrrrr");
     }
 

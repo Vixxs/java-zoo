@@ -10,7 +10,7 @@ public class Aigle extends Ovovivipare implements Volant {
     }
 
     @Override
-    public void rugir() {
+    public void crier() {
         System.out.println("Cui cui");
     }
 
