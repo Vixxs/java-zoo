@@ -1,18 +1,23 @@
 package com.company.classes.animaux;
 
+import com.company.classes.enclos.Enclos;
+
 public abstract class Animal {
 
 
-    private String nomEspece;
-    private String sexe;
-    private int poid;
-    private int age;
-    private int faim;
-    private boolean sommeil;
-    private int vie;// Indicateur sur 100 point
+    protected String nomEspece;
+    protected String nom;
+    protected String sexe;
+    protected Enclos enclos;
+    protected int poid;
+    protected int age;
+    protected int faim;
+    protected boolean sommeil;
+    protected int vie;// Indicateur sur 100 point
 
-    public Animal(String nomEspece, String sexe, int poid, int age) {
+    public Animal(String nomEspece, String nom, String sexe, int poid, int age) {
         this.nomEspece = nomEspece;
+        this.nom = nom;
         this.sexe = sexe;
         this.poid = poid;
         this.age = age;
@@ -21,44 +26,36 @@ public abstract class Animal {
         this.vie = 100;
     }
 
+
+    @Override
     public String toString() {
-        String newLine = System.getProperty("line.separator");
-        return "Nom espece : " + this.nomEspece + newLine +
-                "Sexe : " + this.sexe + newLine +
-                "Poid : " + this.poid + " Kg" + newLine +
-                "Age : " + this.age + " ans" + newLine   ;
+        return "Animal{" +
+                "nomEspece='" + nomEspece + '\'' +
+                "nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", poid=" + poid +
+                ", age=" + age +
+                '}';
     }
 
     public String getNomEspece() {
         return nomEspece;
     }
 
-    public void setNomEspece(String nomEspece) {
-        this.nomEspece = nomEspece;
+    public String getNom() {
+        return nom;
     }
 
     public String getSexe() {
         return sexe;
     }
 
-    public void setSexe(String sexe) {
-        this.sexe = sexe;
-    }
-
     public int getPoid() {
         return poid;
     }
 
-    public void setPoid(int poid) {
-        this.poid = poid;
-    }
-
     public int getAge() {
         return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public int isHungry() {
@@ -71,6 +68,14 @@ public abstract class Animal {
 
     public int getVie() {
         return vie;
+    }
+
+    public Enclos getEnclos() {
+        return enclos;
+    }
+
+    public void setEnclos(Enclos enclos) {
+        this.enclos = enclos;
     }
 
     public void manger(){

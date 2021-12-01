@@ -5,8 +5,9 @@ import com.company.interfaces.Marin;
 public class Requin extends Ovovivipare implements Marin {
     public static final String nomEspece = "Requin";
     public static final int tempGestation = 300 ; // en jours
-    public Requin(String sexe, int weight, int age) {
-        super(nomEspece, sexe, weight, age);
+
+    public Requin(String nom, String sexe, int poid, int age) {
+        super(nomEspece, nom, sexe, poid, age);
     }
 
     @Override

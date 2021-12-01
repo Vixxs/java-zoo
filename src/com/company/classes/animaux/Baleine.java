@@ -5,8 +5,9 @@ import com.company.interfaces.Marin;
 public class Baleine extends Mammifere implements Marin {
     public static final String nomEspece = "Baleine";
     public static final int tempGestation = 330 ; // en jours
-    public Baleine(String sexe, int weight, int age) {
-        super(nomEspece, sexe, weight, age);
+
+    public Baleine(String nom, String sexe, int poid, int age) {
+        super(nomEspece, nom, sexe, poid, age);
     }
 
     @Override

@@ -7,9 +7,11 @@ import com.company.interfaces.Volant;
 public class Pingouin extends Ovovivipare implements Volant, Vagabond, Marin {
     public static final String nomEspece = "Pingouin";
     public static final int tempGestation = 35 ; // en jours
-    public Pingouin(String sexe, int weight, int age) {
-        super(nomEspece, sexe, weight, age);
+
+    public Pingouin(String nom, String sexe, int poid, int age) {
+        super(nomEspece, nom, sexe, poid, age);
     }
+
 
     @Override
     public void pondre() {

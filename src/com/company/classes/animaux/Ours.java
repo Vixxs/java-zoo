@@ -5,9 +5,11 @@ import com.company.interfaces.Vagabond;
 public class Ours extends Mammifere implements Vagabond {
     public static final String nomEspece = "Ours";
     public static final int tempGestation = 150 ; // en jours
-    public Ours(String sexe, int weight, int age) {
-        super(nomEspece, sexe, weight, age);
+
+    public Ours(String nom, String sexe, int poid, int age) {
+        super(nomEspece, nom, sexe, poid, age);
     }
+
 
     @Override
     public void mettreBas() {
