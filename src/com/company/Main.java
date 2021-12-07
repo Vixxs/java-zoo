@@ -3,9 +3,12 @@ package com.company;
 import com.company.classes.employes.Employe;
 import com.company.classes.enclos.Enclos;
 import com.company.classes.animaux.PoissonRouge;
+import com.company.classes.zoo.Zoo;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
@@ -18,6 +21,10 @@ public class Main {
 
         Employe employe = new Employe("Boris","homme", 21);
         employe.examinerEnclos(enclos);
+        List<Enclos> employeList = new ArrayList<>();
+        employeList.add(enclos);
+        Zoo zoo = new Zoo("Zoo",employe,3,employeList);
+        zoo.start();
 
 
 
