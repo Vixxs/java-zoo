@@ -43,11 +43,11 @@ public class Main {
         }
         List<Enclos> listEnclos = zoo.getListeEnclos();
         Enclos enclos = listEnclos.get(tmp - 1);
+        clearScreen();
         actionEnclos(enclos);
     }
 
     public void actionAnimal(Animal animal){
-        clearScreen();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(animal.getNom());
@@ -61,29 +61,33 @@ public class Main {
             case 0:
                 action();
             case 1:
+                clearScreen();
                 animal.crier();
                 actionAnimal(animal);
                 break;
             case 2:
+                clearScreen();
                 animal.dormir();
                 actionAnimal(animal);
                 break;
             case 3:
+                clearScreen();
                 animal.soigner();
                 actionAnimal(animal);
                 break;
             case 4:
+                clearScreen();
                 animal.infoAnimal();
                 actionAnimal(animal);
                 break;
             default:
+                clearScreen();
                 actionAnimal(animal);
                 break;
         }
     }
 
     public void actionEnclos(Enclos enclos){
-        clearScreen();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(enclos.getNom());
@@ -96,22 +100,30 @@ public class Main {
         switch (tmp) {
             case 0 -> action();
             case 1 -> {
+                clearScreen();
                 this.employe.examinerEnclos(enclos);
                 actionEnclos(enclos);
             }
             case 2 -> {
+                clearScreen();
                 this.employe.nettoyerEnclos(enclos);
                 actionEnclos(enclos);
             }
             case 3 -> {
+                clearScreen();
                 this.employe.nourrirAnimaux(enclos);
                 actionEnclos(enclos);
             }
             case 4 -> {
+                clearScreen();
                 Animal animal = enclos.afficherAnimaux();
+                clearScreen();
                 actionAnimal(animal);
             }
-            default -> actionEnclos(enclos);
+            default ->{
+                clearScreen();
+                actionEnclos(enclos);
+            }
         }
     }
 
@@ -146,6 +158,7 @@ public class Main {
 
         this.zoo = new Zoo("MyZoo",employe,3,listeEnclos);
         this.zoo.start();
+
         action();
 
     }

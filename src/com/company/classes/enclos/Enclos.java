@@ -109,7 +109,6 @@ public class Enclos {
     }
 
     public Animal afficherAnimaux() {
-        clearScreen();
         Scanner scanner = new Scanner(System.in);
 
         int index = 1;
