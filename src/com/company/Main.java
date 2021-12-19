@@ -1,39 +1,157 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.company;
 
+import com.company.classes.animaux.*;
 import com.company.classes.employes.Employe;
+import com.company.classes.enclos.Aquarium;
 import com.company.classes.enclos.Enclos;
-import com.company.classes.animaux.PoissonRouge;
+import com.company.classes.enclos.Voliere;
 import com.company.classes.zoo.Zoo;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class Main {
 
+    private Zoo zoo ;
+    private Employe employe;
+
+    public Main() {
+    }
+
+    public void action(){
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Bienvenue "+ this.employe.getNom());
+        this.zoo.afficherNombreAnimaux();
+        int tmp = 0;
+        while (tmp != 1 && tmp != 2 &&  tmp != 3 ){
+            System.out.println("Quel enclos voulez vous voir ?");
+            zoo.afficherEnclos();
+            tmp = scanner.nextInt();
+        }
+        List<Enclos> listEnclos = zoo.getListeEnclos();
+        Enclos enclos = listEnclos.get(tmp - 1);
+        actionEnclos(enclos);
+    }
+
+    public void actionAnimal(Animal animal){
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(animal.getNom());
+        System.out.println("0 - Retour");
+        System.out.println("1 - Carreser");
+        System.out.println("2 - Endormir");
+        System.out.println("3 - Soigner");
+        System.out.println("4 - Informations");
+        int tmp = scanner.nextInt();
+        switch (tmp){
+            case 0:
+                action();
+            case 1:
+                animal.crier();
+                actionAnimal(animal);
+                break;
+            case 2:
+                animal.dormir();
+                actionAnimal(animal);
+                break;
+            case 3:
+                animal.soigner();
+                actionAnimal(animal);
+                break;
+            case 4:
+                animal.infoAnimal();
+                actionAnimal(animal);
+                break;
+            default:
+                actionAnimal(animal);
+                break;
+        }
+    }
+
+    public void actionEnclos(Enclos enclos){
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println(enclos.getNom());
+        System.out.println("0 - Retour");
+        System.out.println("1 - Examiner l'enclos");
+        System.out.println("2 - Nettoyer l'enclos");
+        System.out.println("3 - Nourrir les animaux");
+        System.out.println("4 - Liste des animaux");
+        int tmp = scanner.nextInt();
+        switch (tmp) {
+            case 0 -> action();
+            case 1 -> {
+                this.employe.examinerEnclos(enclos);
+                actionEnclos(enclos);
+            }
+            case 2 -> {
+                this.employe.nettoyerEnclos(enclos);
+                actionEnclos(enclos);
+            }
+            case 3 -> {
+                this.employe.nourrirAnimaux(enclos);
+                actionEnclos(enclos);
+            }
+            case 4 -> {
+                Animal animal = enclos.afficherAnimaux();
+                actionAnimal(animal);
+            }
+            default -> actionEnclos(enclos);
+        }
+    }
+
+    public static void clearScreen(){
+        System.out.print("\033[H\033[2J");
+        System.out.flush();
+        System.out.println("--------------");
+        System.out.println("░M░Y░ ░Z░O░O░");
+        System.out.println("--------------");
+    }
+
+    public void menu(){
+        Scanner scanner = new Scanner(System.in);
+        clearScreen();
+
+        System.out.println("Entrez les informations demandées");
+        System.out.println("Votre nom :");
+        String nomEmploye = scanner.nextLine();
+
+        this.employe = new Employe(nomEmploye,"homme",20);
+
+        Enclos enclos = new Enclos("Enclos",200,5);
+        enclos.ajouterAnimal(new Tigre("Tigrou","homme",43,5),new Ours("Bouba","femme",70,13),new Loup("Graou","homme",40,8));
+        Aquarium aquarium = new Aquarium("Aquarium",100,3);
+        aquarium.ajouterAnimal(new PoissonRouge("Boris","femme",1,1),new Requin("Sharky","homme",13,13),new Baleine("Laboon","femme",120,30));
+        Voliere voliere = new Voliere("Voliere",50,2);
+        voliere.ajouterAnimal(new Aigle("Aigle","homme",10,5),new Pingouin("Pingu","femme",5,3));
+        List<Enclos> listeEnclos = new ArrayList<>();
+        listeEnclos.add(enclos);
+        listeEnclos.add(aquarium);
+        listeEnclos.add(voliere);
+
+        this.zoo = new Zoo("MyZoo",employe,3,listeEnclos);
+        this.zoo.start();
+        action();
+
+    }
+
     public static void main(String[] args) {
-
-        Enclos enclos = new Enclos("Maison",200,20);
-        PoissonRouge poissonRouge = new PoissonRouge("Bob","femme",120,12);
-        poissonRouge.crier();
-        enclos.ajouterAnimal(poissonRouge);
-
-        Employe employe = new Employe("Boris","homme", 21);
-        employe.examinerEnclos(enclos);
-        List<Enclos> employeList = new ArrayList<>();
-        employeList.add(enclos);
-        Zoo zoo = new Zoo("Zoo",employe,3,employeList);
-        zoo.start();
-
-
-
-
-        JFrame myFrame = new JFrame();
-        myFrame.setSize(500,500);
-        myFrame.setLocationRelativeTo(null);
-        myFrame.setVisible(true);
-        myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        myFrame.setTitle("Zoo");
+        Main main = new Main();
+        main.menu();
     }
 }

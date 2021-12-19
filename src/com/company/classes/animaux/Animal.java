@@ -11,7 +11,7 @@ public abstract class Animal {
     protected Enclos enclos;
     protected int poid;
     protected int age;
-    protected int faim;
+    protected boolean faim;
     protected boolean sommeil;
     protected int vie;// Indicateur sur 100 point
 
@@ -21,7 +21,7 @@ public abstract class Animal {
         this.sexe = sexe;
         this.poid = poid;
         this.age = age;
-        this.faim = 100;
+        this.faim = false;
         this.sommeil = false;
         this.vie = 100;
     }
@@ -36,6 +36,15 @@ public abstract class Animal {
                 ", poid=" + poid +
                 ", age=" + age +
                 '}';
+    }
+
+    public void infoAnimal(){
+        System.out.println("Espece : " + getNomEspece());
+        System.out.println("Nom : " + getNom());
+        System.out.println("Sexe : " + getSexe());
+        System.out.println("Poid : " + getPoid());
+        System.out.println("Age : " + getAge());
+        System.out.println("Vie : " + getVie());
     }
 
     public String getNomEspece() {
@@ -58,7 +67,7 @@ public abstract class Animal {
         return age;
     }
 
-    public int isHungry() {
+    public boolean isHungry() {
         return faim;
     }
 
@@ -80,28 +89,30 @@ public abstract class Animal {
 
     public void manger(){
 
-        if (!sommeil){
-            System.out.println("Mange...");
+        if (faim){
+            System.out.println(getNom() + " mange ...");
         }else {
-            System.out.println("Ne peut pas manger maintenant");
+            System.out.println( getNom() + " n'a pas faim");
         }
     }
 
     public abstract void crier();
 
     public void soigner(){
-        System.out.println("Soigné");
+        System.out.println(getNom() +" est soigné");
     }
 
     public void dormir(){
         if (!sommeil){
-            System.out.println("S'endort");
+            System.out.println(getNom() +" s'endort");
             this.sommeil = true;
         }else {
-            System.out.println("Se réveil");
+            System.out.println(getNom() + " se réveil");
             this.sommeil = false;
         }
     }
 
-
+    public void setFaim(boolean faim) {
+        this.faim = faim;
+    }
 }

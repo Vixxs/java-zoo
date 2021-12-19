@@ -5,8 +5,10 @@ import com.company.classes.animaux.Animal;
 import com.company.interfaces.Vagabond;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.Scanner;
+
+import static com.company.Main.clearScreen;
 
 public class Enclos {
     protected String nom;
@@ -72,9 +74,11 @@ public class Enclos {
 
     public boolean nettoyerEnclos() {
         if (this.population == 0 && this.proprete == Proprete.MAUVAIS){
+            System.out.println(getNom() + " est tout propre !");
             this.proprete = Proprete.BON;
             return true;
         }
+        System.out.println(getNom() + " n'est pas sale");
         return false;
     }
 
@@ -90,7 +94,6 @@ public class Enclos {
         System.out.println("Capacité : " +this.capacite);
         System.out.println("Population : " +this.population);
         System.out.println("Superficie : " +this.superficie);
-        System.out.println("Animaux : " +this.listeAnimaux);
     }
 
     @Override
@@ -103,5 +106,20 @@ public class Enclos {
                 ", proprete=" + proprete +
                 ", listeAnimaux=" + listeAnimaux +
                 '}';
+    }
+
+    public Animal afficherAnimaux() {
+        clearScreen();
+        Scanner scanner = new Scanner(System.in);
+
+        int index = 1;
+        System.out.println("Choissisez un animal");
+        for (Animal animal : listeAnimaux){
+            System.out.println(index + " - " + animal.getNom());
+            ++index ;
+        }
+        int tmp = scanner.nextInt();
+        return listeAnimaux.get(tmp - 1);
+
     }
 }

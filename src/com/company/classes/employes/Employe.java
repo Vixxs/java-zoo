@@ -29,4 +29,17 @@ public class Employe {
         enclos.ajouterAnimal(animal);
         System.out.println(animal.getNom() + " à bien été transferé");
     }
+
+    @Override
+    public String toString() {
+        return "Employe{" +
+                "nom='" + nom + '\'' +
+                ", sexe='" + sexe + '\'' +
+                ", age=" + age +
+                '}';
+    }
+
+    public String getNom() {
+        return nom;
+    }
 }
