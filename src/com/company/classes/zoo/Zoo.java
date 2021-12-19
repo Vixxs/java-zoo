@@ -1,10 +1,12 @@
 package com.company.classes.zoo;
 
+import com.company.classes.Proprete;
 import com.company.classes.animaux.Animal;
 import com.company.classes.employes.Employe;
 import com.company.classes.enclos.Enclos;
 import com.sun.tools.jconsole.JConsoleContext;
 
+import javax.sound.midi.Soundbank;
 import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.List;
 import java.util.Random;
@@ -74,6 +76,28 @@ public class Zoo{
 
     public void start() {
         Runnable runnable = () -> {
+            int min = 1;
+            int max = listeEnclos.size();
+
+            Random random = new Random();
+
+            int value = random.nextInt(max + min) + min;
+
+            Enclos enclos = listeEnclos.get(value-1);
+
+            List<Animal> listeAnimaux = enclos.getListeAnimaux();
+            Random random2 = new Random();
+            int value2 = random2.nextInt(listeAnimaux.size() + 1) + 1;
+
+            Animal animal = listeAnimaux.get(value2-1);
+            animal.dormir();
+
+            System.out.println(animal.getNom() + " est tombé malade");
+            animal.setVie(50);
+
+            System.out.println(enclos.getNom() + " est sale");
+            enclos.setProprete(Proprete.MAUVAIS);
+
         };
         ScheduledExecutorService service = Executors
                 .newSingleThreadScheduledExecutor();

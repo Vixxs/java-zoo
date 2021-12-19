@@ -73,7 +73,7 @@ public class Enclos {
     }
 
     public boolean nettoyerEnclos() {
-        if (this.population == 0 && this.proprete == Proprete.MAUVAIS){
+        if (this.proprete == Proprete.MAUVAIS){
             System.out.println(getNom() + " est tout propre !");
             this.proprete = Proprete.BON;
             return true;
@@ -121,5 +121,9 @@ public class Enclos {
         int tmp = scanner.nextInt();
         return listeAnimaux.get(tmp - 1);
 
+    }
+
+    public void setProprete(Proprete proprete) {
+        this.proprete = proprete;
     }
 }

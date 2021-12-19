@@ -115,4 +115,8 @@ public abstract class Animal {
     public void setFaim(boolean faim) {
         this.faim = faim;
     }
+
+    public void setVie(int vie) {
+        this.vie = vie;
+    }
 }
